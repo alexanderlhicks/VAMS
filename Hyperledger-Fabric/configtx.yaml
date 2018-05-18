@@ -1,0 +1,94 @@
+---
+Profiles:
+
+    OrdererGenesis:
+        Orderer:
+            <<: *OrdererDefaults
+            Organizations:
+                - *Orderer
+        Consortiums:
+            SampleConsortium:
+                Organizations:
+                    - *Agents
+                    - *DataProviders
+                    - *Auditors
+                    - *Users
+
+    MainChannel:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Agents
+                - *DataProviders
+                - *Auditors
+                - *Users
+
+    #AgentDpChannel:
+        #Consortium: SampleConsortium
+        #Application:
+            #<<: *ApplicationDefaults
+            #Organizations:
+                #- *Agents
+                #- *DataProviders
+                #- *Auditors
+
+Organizations:
+    - &Orderer
+        Name: Orderer
+        ID: OrdererMSP
+        MSPDir: /home/ubuntu/verifiable-access-code/hlf-11preview/crypto-config/ordererOrganizations/Orderer/msp
+        AdminPrincipal: Role.ADMIN
+
+    - &Agents
+        Name: Agents
+        ID: AgentsMSP
+        MSPDir: /home/ubuntu/verifiable-access-code/hlf-11preview/crypto-config/peerOrganizations/Agents/msp/
+        AdminPrincipal: Role.ADMIN
+        AnchorPeers:
+            - Host: agent
+              Port: 7051
+    - &DataProviders
+        Name: DataProviders
+        ID: DataProvidersMSP
+        MSPDir: /home/ubuntu/verifiable-access-code/hlf-11preview/crypto-config/peerOrganizations/DataProviders/msp/
+        AdminPrincipal: Role.ADMIN
+        AnchorPeers:
+            - Host: dataprovider
+              Port: 7051
+    - &Auditors
+        Name: Auditors
+        ID: AuditorsMSP
+        MSPDir: /home/ubuntu/verifiable-access-code/hlf-11preview/crypto-config/peerOrganizations/Auditors/msp/
+        AdminPrincipal: Role.ADMIN
+        AnchorPeers:
+            - Host: auditor
+              Port: 7051
+    - &Users
+        Name: Users
+        ID: UsersMSP
+        MSPDir: /home/ubuntu/verifiable-access-code/hlf-11preview/crypto-config/peerOrganizations/Users/msp/
+        AdminPrincipal: Role.ADMIN
+        AnchorPeers:
+            - Host: user
+              Port: 7051
+
+
+Orderer: &OrdererDefaults
+    OrdererType: kafka
+    Addresses:
+        - orderer:7050
+    BatchTimeout: 10s
+    BatchSize:
+        MaxMessageCount: 1
+        AbsoluteMaxBytes: 99 MB
+        PreferredMaxBytes: 512 KB
+    MaxChannels: 0
+    Kafka:
+        Brokers:
+            - kafka:9092
+    Organizations:
+
+Application: &ApplicationDefaults
+
+    Organizations:

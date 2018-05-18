@@ -1,0 +1,24 @@
+OrdererOrgs:
+  - Name: Orderer
+    Domain: Orderer
+    Specs:
+      - Hostname: Orderer
+
+PeerOrgs:
+  - Name: Agents
+    Domain: Agents
+    Users:
+      Count: 0
+  - Name: DataProviders
+    Domain: DataProviders
+    Users:
+      Count: 0
+  - Name: Auditors
+    Domain: Auditors
+    Users:
+      Count: 0
+  - Name: Users
+    Domain: Users
+    Users:
+      Count: 0
+
