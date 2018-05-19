@@ -1,0 +1,14 @@
+lit
+  -ntrans number_of_transactions_in_000s 1000
+  -tlen avg_items_per_transaction 10
+  -nitems number_of_different_items_in_000s) 0.5
+  -npats number_of_patterns 10
+  -patlen avg_length_of_maximal_pattern 2
+  -corr correlation_between_patterns 0.25
+  -conf avg_confidence_in_a_rule 0.8
+  -fname data
+  -ascii
+
+  
+  
+  lit -ntrans 1000 -tlen 10 -nitems 1 -npats 10 -patlen 2 -corr 0.25 -conf 0.8 -fname data -ascii
