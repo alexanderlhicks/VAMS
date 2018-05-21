@@ -21,7 +21,7 @@ Transactions can be sent from the client, the following is an example request th
 PEER_ID=agent \
 ORG_ID=Agents \
 CORE_PEER_LOCALMSPID="AgentsMSP" \
-CORE_PEER_MSPCONFIGPATH=/home/ubuntu/verifiable-access-code/hlf-11preview/crypto-config/peerOrganizations/Agents/users/Admin@Agents/msp \
+CORE_PEER_MSPCONFIGPATH=FILEPATH/crypto-config/peerOrganizations/Agents/users/Admin@Agents/msp \
 CORE_PEER_ADDRESS=agent:7051 \
 peer chaincode invoke -n maincc -c '{"Args":["req", "idc", "ioccoencrypt", "userencrypt"]}' -C main
 
