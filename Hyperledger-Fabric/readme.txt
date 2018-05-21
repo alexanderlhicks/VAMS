@@ -1,7 +1,7 @@
 VAMS - Hyperledger Fabric based implementation
 
 Included here are the files required to run the test network used for our evaluation of the Hyperledger Fabric based implementation.
-The implementation was tested on seven aws t2.medium machines (2 vCPUs, 4GB memory), running Linux 16.04 LTS with Go 1.7, docker-ce 17.06, docker-compose 1.18 and Fabric 1.06.
+The implementation was tested on seven aws t2.medium machines (2 vCPUs, 4GB memory), running Linux 16.04 LTS with Go 1.7, docker-ce 17.06, docker-compose 1.18 and Fabric 1.06. The seven machines correspond to four peers (agent, data provider, user, auditor), a Kafka Zookeeper service, a Kafka broker and a client.
 For Hyperledger Fabric specific documentation, see https://hyperledger-fabric.readthedocs.io and https://github.com/hyperledger/fabric.
 
 There is one folder, src, that contains the chaincode written in Go, and 10 files (excluding this readme):
@@ -15,7 +15,7 @@ On the client machine, run prelim.sh, which will generate required cryptographic
 
 On the four peer machines, run agent.sh, dp.sh, user.sh and auditor.sh to start a peer instance for each organization. To start the ordering service, run docker-compose -f kafka-compose.yaml to start the Kafka Zookeeper service, then run orderer.sh to start the kafka broker.
 
-Once everything peer and the ordering service is up and running, run setup.sh to connect the peers to the channel, install and instantiate the chaincode. The network is now setup, and you are free to start making transactions.
+Once everything peer and the ordering service is up and running, run setup.sh from the client machine to connect the peers to the channel, install and instantiate the chaincode. The network is now setup, and you are free to start making transactions.
 
 Transactions can be sent from the client, the following is an example request that invokes the "req" function in the chaincode:
 PEER_ID=agent \
