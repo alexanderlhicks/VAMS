@@ -9,3 +9,7 @@ The Trillian fodler contains code code for the Trillian based implementation.
 The ThreeBallot folder contains code and datasets for the evaluation of the ThreeBallot based privacy-preserving statistics scheme.
 
 The pre-print of the paper can be found on arxiv: https://arxiv.org/abs/1805.04772
+
+This repository is also linked to Zenodo so that it can be cited using the following DOI:
+[![DOI](https://zenodo.org/badge/134002102.svg)](https://zenodo.org/badge/latestdoi/134002102)
+
